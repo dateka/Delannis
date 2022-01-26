@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ynov.Delannis.Domain", "Ynov.Delannis.Domain\Ynov.Delannis.Domain.csproj", "{9D23F094-5516-4E52-9D09-FE01B8372DDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ynov.Delannis.DomainShared", "Ynov.Delannis.DomainShared\Ynov.Delannis.DomainShared.csproj", "{CA01FA6D-B7D4-4CD4-AEC8-9EDEAF421956}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ynov.Delannis.Infrastructure", "Ynov.Delannis.Infrastructure\Ynov.Delannis.Infrastructure.csproj", "{346F9594-DE61-40B2-9D97-EED3DC720666}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2ED5766F-0415-46E8-BB47-38F9FD72D667}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1145A07D-EDC9-40DC-9C4F-C000BE3809D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ynov.Delannis.Specs", "Ynov.Delannis.Specs\Ynov.Delannis.Specs.csproj", "{FD5DA751-010E-4004-95AC-1F2C15AABC02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ynov.Delannis.UnitTest", "Ynov.Delannis.UnitTest\Ynov.Delannis.UnitTest.csproj", "{EACCB822-69BF-474D-83B1-E4AB550B0D03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D23F094-5516-4E52-9D09-FE01B8372DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D23F094-5516-4E52-9D09-FE01B8372DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D23F094-5516-4E52-9D09-FE01B8372DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D23F094-5516-4E52-9D09-FE01B8372DDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA01FA6D-B7D4-4CD4-AEC8-9EDEAF421956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA01FA6D-B7D4-4CD4-AEC8-9EDEAF421956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA01FA6D-B7D4-4CD4-AEC8-9EDEAF421956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA01FA6D-B7D4-4CD4-AEC8-9EDEAF421956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{346F9594-DE61-40B2-9D97-EED3DC720666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{346F9594-DE61-40B2-9D97-EED3DC720666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{346F9594-DE61-40B2-9D97-EED3DC720666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{346F9594-DE61-40B2-9D97-EED3DC720666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD5DA751-010E-4004-95AC-1F2C15AABC02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD5DA751-010E-4004-95AC-1F2C15AABC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD5DA751-010E-4004-95AC-1F2C15AABC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD5DA751-010E-4004-95AC-1F2C15AABC02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EACCB822-69BF-474D-83B1-E4AB550B0D03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EACCB822-69BF-474D-83B1-E4AB550B0D03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EACCB822-69BF-474D-83B1-E4AB550B0D03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EACCB822-69BF-474D-83B1-E4AB550B0D03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9D23F094-5516-4E52-9D09-FE01B8372DDE} = {1145A07D-EDC9-40DC-9C4F-C000BE3809D5}
+		{CA01FA6D-B7D4-4CD4-AEC8-9EDEAF421956} = {1145A07D-EDC9-40DC-9C4F-C000BE3809D5}
+		{346F9594-DE61-40B2-9D97-EED3DC720666} = {1145A07D-EDC9-40DC-9C4F-C000BE3809D5}
+		{FD5DA751-010E-4004-95AC-1F2C15AABC02} = {2ED5766F-0415-46E8-BB47-38F9FD72D667}
+		{EACCB822-69BF-474D-83B1-E4AB550B0D03} = {2ED5766F-0415-46E8-BB47-38F9FD72D667}
+	EndGlobalSection
+EndGlobal

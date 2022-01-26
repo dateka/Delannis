@@ -1,0 +1,1 @@
+livingdoc feature-folder .\ -t bin\Debug\**\TestExecution.json --binding-assemblies "bin\Debug\net5.0\Ynov.Delannis.Specs.dll"
