@@ -20,7 +20,7 @@ namespace Ynov.Delannis.Domain.UserAggregate.Services
             _userRepository = userRepository;
         }
 
-        public Task HandleAsync(string username, string email, string password)
+        public async Task HandleAsync(string username, string email, string password)
         {
             if (_authenticationGateway.IsAuthenticate())
             {
@@ -48,14 +48,12 @@ namespace Ynov.Delannis.Domain.UserAggregate.Services
                 throw new UnvalidUsernameException();
             }
             
-            if (Regex.IsMatch(password, "^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$") == false)
+            if (Regex.IsMatch(password, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$") == false)
             {
                 throw new UnvalidPasswordException();
             }
 
-            _userRepository.AddAsync(new User(username, email, password));
-            
-            return Task.CompletedTask;
+            await _userRepository.AddAsync(new User(username, email, password));
         }
     }
 }

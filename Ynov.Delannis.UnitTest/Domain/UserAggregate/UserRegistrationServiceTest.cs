@@ -80,13 +80,13 @@ namespace Ynov.Delannis.UnitTest.Domain.UserAggregate
         [Trait("Category", "Domain")]
         public async Task UserRegistrationService_WhenUserCreateAnAccount_ShouldReturnAnAccount()
         {
-            await _registrationService.HandleAsync("damien02", "damien@gmail.com", "Azerty123?");
+            await _registrationService.HandleAsync("damien02", "damien@gmail.com", "Azerty123&");
 
             User exceptedUser = await _userRepository.GetByEmailAsync("damien@gmail.com");
             
             exceptedUser.Should().NotBeNull();
             exceptedUser.Email.Should().BeEquivalentTo("damien@gmail.com");
-            exceptedUser.Password.Should().BeEquivalentTo("Azerty123?");
+            exceptedUser.Password.Should().BeEquivalentTo("Azerty123&");
             exceptedUser.UserName.Should().BeEquivalentTo("damien02");
         }
     }
