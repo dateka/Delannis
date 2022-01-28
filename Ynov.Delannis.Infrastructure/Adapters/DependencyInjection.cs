@@ -9,7 +9,7 @@ namespace Ynov.Delannis.Infrastructure.Adapters
         public static void InjectInfrastructure(this IServiceCollection services)
         {
             services.AddScoped<IAuthenticationGateway, InMemoryAuthenticationGateway>();
-            services.AddScoped<IUserRepository, InMemoryUserRepository>();
+            services.AddSingleton<IUserRepository, InMemoryUserRepository>();
         }
     }
 }

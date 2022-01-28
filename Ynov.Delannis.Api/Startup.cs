@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Ynov.Delannis.Application.Core;
 
 namespace Ynov.Delannis.Api
 {
@@ -27,6 +28,7 @@ namespace Ynov.Delannis.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.InjectServices();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "Ynov.Delannis.Api", Version = "v1"});

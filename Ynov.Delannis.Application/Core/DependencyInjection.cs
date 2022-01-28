@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Ynov.Delannis.Application.UserAggregate;
 using Ynov.Delannis.Domain.Core;
 using Ynov.Delannis.Infrastructure.Adapters;
 
@@ -10,7 +11,7 @@ namespace Ynov.Delannis.Application.Core
         {
             services.InjectDomain();
             services.InjectInfrastructure();
-            //services.AddScoped<SignInService>();
+            services.AddScoped<UserService>();
         }
     }
 }
