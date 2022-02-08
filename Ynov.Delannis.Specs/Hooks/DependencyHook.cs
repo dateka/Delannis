@@ -16,6 +16,7 @@ namespace Ynov.Delannis.Specs.Hooks
             services.AddScoped<IUserRepository, InMemoryUserRepository>();
             services.AddScoped<IAuthenticationGateway, InMemoryAuthenticationGateway>();
             services.AddScoped<IUserRegistrationService, UserRegistrationService>();
+            services.AddScoped<IUserLoginService, UserLoginService>();
             services.AddScoped<ErrorDriver>();
             return services;
         }

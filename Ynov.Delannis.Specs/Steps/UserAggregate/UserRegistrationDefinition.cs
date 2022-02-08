@@ -65,8 +65,11 @@ namespace Ynov.Delannis.Specs.Steps.UserAggregate
         public async Task ThenIShouldHaveAnAccount()
         {
             User exceptedUser = await _userRepository.GetByEmailAsync(_user.Email);
+            
             exceptedUser.Should().NotBeNull();
-            exceptedUser.Should().BeEquivalentTo(_user);
+            exceptedUser.Email.Should().Be(_user.Email);
+            exceptedUser.Password.Should().Be(_user.Password);
+            exceptedUser.UserName.Should().Be(_user.UserName);
         }
     }
 }

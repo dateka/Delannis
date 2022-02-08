@@ -9,5 +9,7 @@
         public const string UnvalidPasswordException = nameof(UnvalidPasswordException);
         public const string UnvalidUsernameException = nameof(UnvalidUsernameException);
         public const string UnvalidEmailException = nameof(UnvalidEmailException);
+        public const string CantLogAccountWhenLoggedException = nameof(CantLogAccountWhenLoggedException);
+        public const string UserNotFoundException = nameof(UserNotFoundException);
     }
 }

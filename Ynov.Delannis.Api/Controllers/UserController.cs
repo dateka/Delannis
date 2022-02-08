@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Ynov.Delannis.Application.UserAggregate;
+using Ynov.Delannis.Application.UserAggregate.Dtos;
 using Ynov.Delannis.DomainShared.Core.Exceptions;
 
 namespace Ynov.Delannis.Api.Controllers

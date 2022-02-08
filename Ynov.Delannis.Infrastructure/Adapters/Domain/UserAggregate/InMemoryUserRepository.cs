@@ -17,19 +17,19 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Domain.UserAggregate
             return Task.CompletedTask;
         }
 
-        public Task<User> GetByIdAsync(string userId)
+        public Task<User?> GetByIdAsync(string userId)
         {
             return Task.FromResult(_users.FirstOrDefault(_ => _.Id == userId));
         }
 
-        public Task<User> GetByUserNameAsync(string userName)
+        public Task<User?> GetByUserNameAsync(string userName)
         {
             return Task.FromResult(_users.FirstOrDefault(_ => _.UserName == userName));
         }
 
-        public Task<User> GetByEmailAsync(string email)
+        public ValueTask<User?> GetByEmailAsync(string email)
         {
-            return Task.FromResult(_users.FirstOrDefault(_ => _.Email == email));
+            return new ValueTask<User?>(_users.FirstOrDefault(_ => _.Email.ToLower() == email.ToLower()));
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Ynov.Delannis.Domain.UserAggregate;
 using Ynov.Delannis.Domain.UserAggregate.Ports;
-using Ynov.Delannis.Infrastructure.Adapters.Domain.Database;
+using Ynov.Delannis.Infrastructure.Adapters.Database;
 
 namespace Ynov.Delannis.Infrastructure.Adapters.Domain.UserAggregate
 {
@@ -9,24 +10,26 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Domain.UserAggregate
     {
         private ApplicationContext _applicationContext;
         public EfUserRepository(ApplicationContext applicationContext) => _applicationContext = applicationContext;
-        public Task AddAsync(User user)
+        public async Task AddAsync(User user)
         {
-            throw new System.NotImplementedException();
+            await _applicationContext.Users.AddAsync(user);
+            await _applicationContext.SaveChangesAsync();
         }
 
-        public Task<User> GetByIdAsync(string userId)
+        public async Task<User?> GetByIdAsync(string userId)
         {
-            throw new System.NotImplementedException();
+            return await _applicationContext.Users.SingleOrDefaultAsync(_ => _.Id == userId);
         }
 
-        public Task<User> GetByUserNameAsync(string userName)
+        public async Task<User> GetByUserNameAsync(string userName)
         {
-            throw new System.NotImplementedException();
+            return await _applicationContext.Users.SingleOrDefaultAsync(_ => _.UserName == userName);
         }
 
-        public Task<User> GetByEmailAsync(string email)
+        public async ValueTask<User> GetByEmailAsync(string email)
         {
-            throw new System.NotImplementedException();
+            return await _applicationContext.Users
+                .SingleOrDefaultAsync(_ => _.Email == email);
         }
     }
 }

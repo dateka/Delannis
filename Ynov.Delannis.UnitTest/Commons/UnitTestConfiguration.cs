@@ -16,6 +16,7 @@ namespace Ynov.Delannis.UnitTest.Commons
 
             services.AddScoped<IUserRepository, InMemoryUserRepository>();
             services.AddScoped<IAuthenticationGateway, InMemoryAuthenticationGateway>();
+            services.AddScoped<IUserLoginService, UserLoginService>();
             services.AddScoped<IUserRegistrationService, UserRegistrationService>();
             
             ServiceProvider = services.BuildServiceProvider();

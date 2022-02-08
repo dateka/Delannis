@@ -5,15 +5,14 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Domain.UserAggregate
 {
     public class InMemoryAuthenticationGateway : IAuthenticationGateway
     {
-        private User _user;
-        public void Authenticate(User user)
+        private User? _user;
+        public void Authenticate(User? user)
         {
             _user = user;
         }
 
-        public bool IsAuthenticate()
-        {
-            return _user is not null;
-        }
+        public bool IsAuthenticate() => _user is not null;
+
+        public User? GetAuthenticatedUser() => _user;
     }
 }

@@ -79,20 +79,20 @@ namespace Ynov.Delannis.Specs.Features.Users
         {
 #line 4
     #line hidden
-            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "UserName",
                         "Email",
                         "Password"});
-            table1.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "elonMusk",
                         "elonMusk@tesla.com",
                         "Azerty123&"});
-            table1.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         "billGate",
                         "billgate@microsoft.com",
                         "Azerty123&"});
 #line 5
-        testRunner.Given("the following users exist", ((string)(null)), table1, "Given ");
+        testRunner.Given("the following users exist", ((string)(null)), table6, "Given ");
 #line hidden
         }
         
@@ -135,16 +135,16 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 11
         testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                             "UserName",
                             "Email",
                             "Password"});
-                table2.AddRow(new string[] {
+                table7.AddRow(new string[] {
                             "elonMusk",
                             "elonMusk@tesla.com",
                             "Azerty123&"});
 #line 12
-        testRunner.And("my registration information", ((string)(null)), table2, "And ");
+        testRunner.And("my registration information", ((string)(null)), table7, "And ");
 #line hidden
 #line 15
         testRunner.When("I create an account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -193,14 +193,14 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 4
     this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                             "UserName",
                             "Email"});
-                table3.AddRow(new string[] {
+                table8.AddRow(new string[] {
                             "alexTeixeira",
                             "alex@gmail.com"});
 #line 19
-        testRunner.Given("my registration information", ((string)(null)), table3, "Given ");
+        testRunner.Given("my registration information", ((string)(null)), table8, "Given ");
 #line hidden
 #line 22
         testRunner.And(string.Format("I set an unvalid password \"{0}\"", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -252,14 +252,14 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 4
     this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                             "UserName",
                             "Password"});
-                table4.AddRow(new string[] {
+                table9.AddRow(new string[] {
                             "alexTeixeira",
                             "Azerty123&"});
 #line 35
-        testRunner.Given("my registration information", ((string)(null)), table4, "Given ");
+        testRunner.Given("my registration information", ((string)(null)), table9, "Given ");
 #line hidden
 #line 38
         testRunner.And(string.Format("I set an unvalid email \"{0}\"", email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -309,14 +309,14 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 4
     this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "Password",
                             "Email"});
-                table5.AddRow(new string[] {
+                table10.AddRow(new string[] {
                             "Azerty123&",
                             "alex@gmail.com"});
 #line 51
-        testRunner.Given("my registration information", ((string)(null)), table5, "Given ");
+        testRunner.Given("my registration information", ((string)(null)), table10, "Given ");
 #line hidden
 #line 54
         testRunner.And(string.Format("I set an unvalid userName \"{0}\"", userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -362,16 +362,16 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 4
     this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                             "UserName",
                             "Email",
                             "Password"});
-                table6.AddRow(new string[] {
+                table11.AddRow(new string[] {
                             "alexTeixeira",
                             "elonMusk@tesla.com",
                             "Azerty123&"});
 #line 65
-        testRunner.Given("my registration information", ((string)(null)), table6, "Given ");
+        testRunner.Given("my registration information", ((string)(null)), table11, "Given ");
 #line hidden
 #line 68
         testRunner.When("I create an account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -414,16 +414,16 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 4
     this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                             "UserName",
                             "Email",
                             "Password"});
-                table7.AddRow(new string[] {
+                table12.AddRow(new string[] {
                             "elonMusk",
                             "alex1@gmail.com",
                             "Azerty123&"});
 #line 72
-        testRunner.Given("my registration information", ((string)(null)), table7, "Given ");
+        testRunner.Given("my registration information", ((string)(null)), table12, "Given ");
 #line hidden
 #line 75
         testRunner.When("I create an account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -466,16 +466,16 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 4
     this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                             "UserName",
                             "Email",
                             "Password"});
-                table8.AddRow(new string[] {
+                table13.AddRow(new string[] {
                             "damien02",
                             "damien@gmail.com",
                             "Azerty123&"});
 #line 79
-      testRunner.Given("my registration information", ((string)(null)), table8, "Given ");
+      testRunner.Given("my registration information", ((string)(null)), table13, "Given ");
 #line hidden
 #line 82
       testRunner.When("I create an account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

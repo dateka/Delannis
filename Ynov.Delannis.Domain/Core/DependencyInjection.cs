@@ -8,6 +8,7 @@ namespace Ynov.Delannis.Domain.Core
         public static void InjectDomain(this IServiceCollection services)
         {
             services.AddScoped<IUserRegistrationService, UserRegistrationService>();
+            services.AddScoped<IUserLoginService, UserLoginService>();
         }
     }
 }

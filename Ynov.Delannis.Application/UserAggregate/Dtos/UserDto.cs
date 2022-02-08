@@ -1,4 +1,4 @@
-﻿namespace Ynov.Delannis.Application.UserAggregate
+﻿namespace Ynov.Delannis.Application.UserAggregate.Dtos
 {
     public class UserDto
     {

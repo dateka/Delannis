@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ynov.Delannis.Domain.UserAggregate;
 
-namespace Ynov.Delannis.Infrastructure.Adapters.Domain.Database
+namespace Ynov.Delannis.Infrastructure.Adapters.Database
 {
     public class ApplicationContext : DbContext
     {

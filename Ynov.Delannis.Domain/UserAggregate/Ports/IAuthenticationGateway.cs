@@ -4,5 +4,6 @@
     {
         void Authenticate(User user);
         bool IsAuthenticate();
+        User? GetAuthenticatedUser();
     }
 }
