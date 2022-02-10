@@ -1,5 +1,5 @@
 ﻿Feature: UserRegistration
-As a visitor, I want to create an account, so that I can be logged in
+As a visitor, I want to create an account, so that I can be logged in.
 
     Background:
         Given the following users exist

@@ -3,9 +3,9 @@ As a logged user, I want to log to my account.
 
     Background:
         Given the following users exist
-          | Email                  | Password   |
-          | elonMusk@tesla.com     | Azerty123& |
-          | billgate@microsoft.com | Azerty123& |
+          | Username | Email                  | Password   |
+          | elonMusk | elonMusk@tesla.com     | Azerty123& |
+          | billGate | billgate@microsoft.com | Azerty123& |
     
     Scenario: Trying to log into my account as logged user
         Given a logged user as "elonMusk"

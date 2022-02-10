@@ -80,12 +80,15 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 4
     #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Username",
                         "Email",
                         "Password"});
             table1.AddRow(new string[] {
+                        "elonMusk",
                         "elonMusk@tesla.com",
                         "Azerty123&"});
             table1.AddRow(new string[] {
+                        "billGate",
                         "billgate@microsoft.com",
                         "Azerty123&"});
 #line 5
