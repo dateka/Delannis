@@ -79,20 +79,20 @@ namespace Ynov.Delannis.Specs.Features.Users
         {
 #line 4
     #line hidden
-            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Username",
                         "Email",
                         "Password"});
-            table1.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "elonMusk",
                         "elonMusk@tesla.com",
                         "Azerty123&"});
-            table1.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         "billGate",
                         "billgate@microsoft.com",
                         "Azerty123&"});
 #line 5
-        testRunner.Given("the following users exist", ((string)(null)), table1, "Given ");
+        testRunner.Given("the following users exist", ((string)(null)), table2, "Given ");
 #line hidden
         }
         
@@ -135,14 +135,14 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 11
         testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Password"});
-                table2.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "elonMusk@tesla.com",
                             "Azerty123&"});
 #line 12
-        testRunner.And("my login information", ((string)(null)), table2, "And ");
+        testRunner.And("my login information", ((string)(null)), table3, "And ");
 #line hidden
 #line 15
         testRunner.When("I log into my account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -185,14 +185,14 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 4
     this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Password"});
-                table3.AddRow(new string[] {
+                table4.AddRow(new string[] {
                             "damien@tesla.com",
                             "Azerty123&"});
 #line 19
-        testRunner.Given("my login information", ((string)(null)), table3, "Given ");
+        testRunner.Given("my login information", ((string)(null)), table4, "Given ");
 #line hidden
 #line 22
         testRunner.When("I log into my account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -235,14 +235,14 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 4
     this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Password"});
-                table4.AddRow(new string[] {
+                table5.AddRow(new string[] {
                             "elonMusk@tesla.com",
                             "Azerty124&"});
 #line 26
-        testRunner.Given("my login information", ((string)(null)), table4, "Given ");
+        testRunner.Given("my login information", ((string)(null)), table5, "Given ");
 #line hidden
 #line 29
         testRunner.When("I log into my account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -285,14 +285,14 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 4
     this.FeatureBackground();
 #line hidden
-                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                             "Email",
                             "Password"});
-                table5.AddRow(new string[] {
+                table6.AddRow(new string[] {
                             "elonMusk@tesla.com",
                             "Azerty123&"});
 #line 33
-        testRunner.Given("my login information", ((string)(null)), table5, "Given ");
+        testRunner.Given("my login information", ((string)(null)), table6, "Given ");
 #line hidden
 #line 36
         testRunner.When("I log into my account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

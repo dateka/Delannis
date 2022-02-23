@@ -9,6 +9,7 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Database
             : base(options) { }
         
         public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,6 +25,13 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Database
                 user.Property(_ => _.UserName).IsRequired();
                 user.Property(_ => _.Password).IsRequired();
                 user.Property(_ => _.Email).IsRequired();
+            });
+
+            modelBuilder.Entity<Product>(product =>
+            {
+                product.HasKey(_ => _.Id);
+                product.Property(_ => _.Name).IsRequired();
+                product.Property(_ => _.Price).IsRequired();
             });
         }
     }

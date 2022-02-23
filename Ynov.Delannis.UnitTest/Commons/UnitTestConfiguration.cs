@@ -18,6 +18,7 @@ namespace Ynov.Delannis.UnitTest.Commons
             services.AddScoped<IAuthenticationGateway, InMemoryAuthenticationGateway>();
             services.AddScoped<IUserLoginService, UserLoginService>();
             services.AddScoped<IUserRegistrationService, UserRegistrationService>();
+            services.AddScoped<IShoppingCartService, ShoppingCartService>();
             
             ServiceProvider = services.BuildServiceProvider();
         }

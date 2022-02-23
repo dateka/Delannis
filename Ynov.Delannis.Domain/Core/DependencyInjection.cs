@@ -9,6 +9,7 @@ namespace Ynov.Delannis.Domain.Core
         {
             services.AddScoped<IUserRegistrationService, UserRegistrationService>();
             services.AddScoped<IUserLoginService, UserLoginService>();
+            services.AddScoped<IShoppingCartService, ShoppingCartService>();
         }
     }
 }
