@@ -6,13 +6,21 @@ using Ynov.Delannis.Domain.UserAggregate.Ports;
 
 namespace Ynov.Delannis.Infrastructure.Adapters.Domain.UserAggregate
 {
-    public class InMemoryShoppingCartRepository : IShoppingCartRepository
+    public class InMemoryProductRepository : IProductRepository
     {
         private IImmutableSet<Product> _products = ImmutableHashSet<Product>.Empty;
         
         public Task AddAsync(Product product)
         {
             IImmutableSet<Product> immutableSet = _products.Add(product);
+            _products = immutableSet;
+            
+            return Task.CompletedTask;
+        }
+
+        public Task RemoveAsync(Product product)
+        {
+            IImmutableSet<Product> immutableSet = _products.Remove(product);
             _products = immutableSet;
             
             return Task.CompletedTask;

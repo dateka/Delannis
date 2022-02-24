@@ -94,6 +94,25 @@ namespace Ynov.Delannis.Specs.Features.Users
 #line 5
   testRunner.Given("the following users exist", ((string)(null)), table1, "Given ");
 #line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "Price",
+                        "Quantity"});
+            table2.AddRow(new string[] {
+                        "pull",
+                        "40",
+                        "1"});
+            table2.AddRow(new string[] {
+                        "pantalon",
+                        "50",
+                        "1"});
+            table2.AddRow(new string[] {
+                        "tee-shirt",
+                        "15",
+                        "2"});
+#line 9
+  testRunner.Given("the following products exist", ((string)(null)), table2, "Given ");
+#line hidden
         }
         
         void System.IDisposable.Dispose()
@@ -109,50 +128,6 @@ namespace Ynov.Delannis.Specs.Features.Users
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to add one product into my shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 10
- this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 4
- this.FeatureBackground();
-#line hidden
-#line 11
-  testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 12
-  testRunner.When("I add one product to my shopping cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 13
-  testRunner.Then("The shopping cart should get updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Trying to add the same product twice into my shopping cart")]
-        [Xunit.TraitAttribute("FeatureTitle", "ShoppingCart")]
-        [Xunit.TraitAttribute("Description", "Trying to add the same product twice into my shopping cart")]
-        public virtual void TryingToAddTheSameProductTwiceIntoMyShoppingCart()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to add the same product twice into my shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 15
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -180,24 +155,23 @@ namespace Ynov.Delannis.Specs.Features.Users
   testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 17
-  testRunner.When("I add the same product twice to my shopping cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.When("I add one \"pull\" to my shopping cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 18
-  testRunner.Then("The shopping cart quantity should be two and the price should be twice the initia" +
-                        "l price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then("The shopping cart should get updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Trying to add two different products into my shopping cart")]
+        [Xunit.SkippableFactAttribute(DisplayName="Trying to add the same product twice into my shopping cart")]
         [Xunit.TraitAttribute("FeatureTitle", "ShoppingCart")]
-        [Xunit.TraitAttribute("Description", "Trying to add two different products into my shopping cart")]
-        public virtual void TryingToAddTwoDifferentProductsIntoMyShoppingCart()
+        [Xunit.TraitAttribute("Description", "Trying to add the same product twice into my shopping cart")]
+        public virtual void TryingToAddTheSameProductTwiceIntoMyShoppingCart()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to add two different products into my shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to add the same product twice into my shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 20
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -225,23 +199,24 @@ namespace Ynov.Delannis.Specs.Features.Users
   testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 22
-  testRunner.When("I add two different products to my shopping cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.When("I add \"tee-shirt\" twice to my shopping cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 23
-  testRunner.Then("The shopping cart should get updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then("The shopping cart quantity should be two and the price should be twice the initia" +
+                        "l price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Trying to remove one product from my shopping cart")]
+        [Xunit.SkippableFactAttribute(DisplayName="Trying to add two different products into my shopping cart")]
         [Xunit.TraitAttribute("FeatureTitle", "ShoppingCart")]
-        [Xunit.TraitAttribute("Description", "Trying to remove one product from my shopping cart")]
-        public virtual void TryingToRemoveOneProductFromMyShoppingCart()
+        [Xunit.TraitAttribute("Description", "Trying to add two different products into my shopping cart")]
+        public virtual void TryingToAddTwoDifferentProductsIntoMyShoppingCart()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to remove one product from my shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to add two different products into my shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 25
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -269,7 +244,7 @@ namespace Ynov.Delannis.Specs.Features.Users
   testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 27
-  testRunner.When("I remove one product from my shopping cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.When("I add \"pull\" and \"pantalon\" to my shopping cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 28
   testRunner.Then("The shopping cart should get updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -278,14 +253,14 @@ namespace Ynov.Delannis.Specs.Features.Users
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Trying to remove all product from my shopping cart")]
+        [Xunit.SkippableFactAttribute(DisplayName="Trying to remove one product from my shopping cart")]
         [Xunit.TraitAttribute("FeatureTitle", "ShoppingCart")]
-        [Xunit.TraitAttribute("Description", "Trying to remove all product from my shopping cart")]
-        public virtual void TryingToRemoveAllProductFromMyShoppingCart()
+        [Xunit.TraitAttribute("Description", "Trying to remove one product from my shopping cart")]
+        public virtual void TryingToRemoveOneProductFromMyShoppingCart()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to remove all product from my shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Trying to remove one product from my shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 30
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -313,10 +288,10 @@ namespace Ynov.Delannis.Specs.Features.Users
   testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 32
-  testRunner.When("I remove all product from my shopping cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.When("I remove one \"pull\" from my shopping cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 33
-  testRunner.Then("The shopping cart should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then("The shopping cart should get updated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

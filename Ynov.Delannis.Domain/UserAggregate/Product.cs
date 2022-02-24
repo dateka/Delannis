@@ -6,11 +6,13 @@ namespace Ynov.Delannis.Domain.UserAggregate
     {
         public string Name { get; }
         public float Price { get;  }
+        public int Quantity { get;  }
 
-        public Product(string productModelName, float productModelPrice)
+        public Product(string productModelName, float productModelPrice, int quantity)
         {
             Name = productModelName;
             Price = productModelPrice;
+            Quantity = quantity;
         }
     }
 }

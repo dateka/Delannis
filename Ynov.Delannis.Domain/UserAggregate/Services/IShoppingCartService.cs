@@ -5,21 +5,21 @@ namespace Ynov.Delannis.Domain.UserAggregate.Services
 {
     public interface IShoppingCartService
     {   
-        Task<Product> HandleAsync(string name, float price);
+        Task<Product> HandleAsync(string name, float price, int quantity);
     }
 
     public class ShoppingCartService : IShoppingCartService
     {
-        private readonly IShoppingCartRepository _shoppingCartRepository;
+        private readonly IProductRepository _productRepository;
 
-        public ShoppingCartService(IShoppingCartRepository shoppingCartRepository)
+        public ShoppingCartService(IProductRepository productRepository)
         {
-            _shoppingCartRepository = shoppingCartRepository;
+            _productRepository = productRepository;
         }
 
-        public async Task<Product> HandleAsync(string name, float price)
+        public async Task<Product> HandleAsync(string name, float price, int quantity)
         {
-            Product product = await _shoppingCartRepository.GetByNameAsync(name);
+            Product product = await _productRepository.GetByNameAsync(name);
 
             return product;
         }

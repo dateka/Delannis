@@ -12,9 +12,9 @@ namespace Ynov.Delannis.Specs.Steps.UserAggregate
     public class UserLoginDefinition
     {
         private UserModel _user;
-        private IAuthenticationGateway _authentication;
-        private IUserLoginService _userLoginService;
-        private ErrorDriver _errorDriver;
+        private readonly IAuthenticationGateway _authentication;
+        private readonly IUserLoginService _userLoginService;
+        private readonly ErrorDriver _errorDriver;
         
         public UserLoginDefinition(ErrorDriver errorDriver, IAuthenticationGateway authentication, IUserLoginService userLoginService)
         {

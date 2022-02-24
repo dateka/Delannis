@@ -32,6 +32,7 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Database
                 product.HasKey(_ => _.Id);
                 product.Property(_ => _.Name).IsRequired();
                 product.Property(_ => _.Price).IsRequired();
+                product.Property(_ => _.Quantity).IsRequired();
             });
         }
     }

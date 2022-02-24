@@ -6,15 +6,22 @@ using Ynov.Delannis.Infrastructure.Adapters.Database;
 
 namespace Ynov.Delannis.Infrastructure.Adapters.Domain.UserAggregate
 {
-    public class EfShoppingCartRepository : IShoppingCartRepository
+    public class EfProductRepository : IProductRepository
     {
         private ApplicationContext _applicationContext;
 
-        public EfShoppingCartRepository(ApplicationContext applicationContext) => _applicationContext = applicationContext;
+        public EfProductRepository(ApplicationContext applicationContext) => _applicationContext = applicationContext;
 
         public async Task AddAsync(Product product)
         {
             await _applicationContext.Products.AddAsync(product);
+            await _applicationContext.SaveChangesAsync();
+        }
+
+        public async Task RemoveAsync(Product product)
+        {
+            //await _applicationContext.Products.RemoveAsync(product);
+            _applicationContext.Products.Remove(product);
             await _applicationContext.SaveChangesAsync();
         }
 

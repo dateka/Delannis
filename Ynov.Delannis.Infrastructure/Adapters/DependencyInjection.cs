@@ -15,6 +15,7 @@ namespace Ynov.Delannis.Infrastructure.Adapters
             
             services.AddScoped<IAuthenticationGateway, InMemoryAuthenticationGateway>();
             services.AddSingleton<IUserRepository, InMemoryUserRepository>();
+            services.AddSingleton<IProductRepository, InMemoryProductRepository>();
         }
     }
 }

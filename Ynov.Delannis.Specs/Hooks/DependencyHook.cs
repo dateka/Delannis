@@ -18,6 +18,7 @@ namespace Ynov.Delannis.Specs.Hooks
             services.AddScoped<IUserRegistrationService, UserRegistrationService>();
             services.AddScoped<IUserLoginService, UserLoginService>();
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
+            services.AddScoped<IProductRepository, InMemoryProductRepository>();
             services.AddScoped<ErrorDriver>();
             return services;
         }

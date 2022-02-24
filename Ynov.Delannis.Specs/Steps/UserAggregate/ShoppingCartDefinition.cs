@@ -1,24 +1,28 @@
-﻿using TechTalk.SpecFlow;
+﻿using System.Threading.Tasks;
+using TechTalk.SpecFlow;
+using Ynov.Delannis.Domain.UserAggregate;
+using Ynov.Delannis.Domain.UserAggregate.Ports;
+using Ynov.Delannis.Domain.UserAggregate.Services;
+using Ynov.Delannis.Specs.Drivers;
 
 namespace Ynov.Delannis.Specs.Steps.UserAggregate
 {
     [Binding]
     public class ShoppingCartDefinition
     {
-        [When(@"I add one product to my shopping cart")]
-        public void WhenIAddOneProductToMyShoppingCart()
+        private readonly ErrorDriver _errorDriver;
+        private readonly ShoppingCartService _shoppingCartService;
+        private readonly IProductRepository _productRepository;
+
+        public ShoppingCartDefinition(ErrorDriver errorDriver, ShoppingCartService shoppingCartService, IProductRepository productRepository)
         {
-            ScenarioContext.StepIsPending();
+            _errorDriver = errorDriver;
+            _shoppingCartService = shoppingCartService;
+            _productRepository = productRepository;
         }
 
         [Then(@"The shopping cart should get updated")]
         public void ThenTheShoppingCartShouldGetUpdated()
-        {
-            ScenarioContext.StepIsPending();
-        }
-
-        [When(@"I add the same product twice to my shopping cart")]
-        public void WhenIAddTheSameProductTwiceToMyShoppingCart()
         {
             ScenarioContext.StepIsPending();
         }
@@ -29,28 +33,40 @@ namespace Ynov.Delannis.Specs.Steps.UserAggregate
             ScenarioContext.StepIsPending();
         }
 
-        [When(@"I add two different products to my shopping cart")]
-        public void WhenIAddTwoDifferentProductsToMyShoppingCart()
+        [When(@"I add one ""(.*)"" to my shopping cart")]
+        public async Task WhenIAddOneToMyShoppingCart(string name)
         {
-            ScenarioContext.StepIsPending();
+            Product product = await _productRepository.GetByNameAsync(name);
+            await _errorDriver.TryExecuteAsync(async () =>
+                await _shoppingCartService.HandleAsync(product.Name, product.Price, product.Quantity));
         }
 
-        [When(@"I remove one product from my shopping cart")]
-        public void WhenIRemoveOneProductFromMyShoppingCart()
+        [When(@"I add ""(.*)"" twice to my shopping cart")]
+        public async Task WhenIAddTwiceToMyShoppingCart(string name)
         {
-            ScenarioContext.StepIsPending();
+            Product product = await _productRepository.GetByNameAsync(name);
+            await _errorDriver.TryExecuteAsync(async () =>
+                await _shoppingCartService.HandleAsync(product.Name, product.Price, product.Quantity));
         }
 
-        [When(@"I remove all product from my shopping cart")]
-        public void WhenIRemoveAllProductFromMyShoppingCart()
+        [When(@"I add ""(.*)"" and ""(.*)"" to my shopping cart")]
+        public async Task WhenIAddAndToMyShoppingCart(string pull, string pantalon)
         {
-            ScenarioContext.StepIsPending();
+            Product product1 = await _productRepository.GetByNameAsync(pull);
+            Product product2 = await _productRepository.GetByNameAsync(pantalon);
+            
+            await _errorDriver.TryExecuteAsync(async () =>
+                await _shoppingCartService.HandleAsync(product1.Name, product1.Price, product1.Quantity));
+            
+            await _errorDriver.TryExecuteAsync(async () =>
+                await _shoppingCartService.HandleAsync(product2.Name, product2.Price, product2.Quantity));
         }
 
-        [Then(@"The shopping cart should be empty")]
-        public void ThenTheShoppingCartShouldBeEmpty()
+        [When(@"I remove one ""(.*)"" from my shopping cart")]
+        public async Task WhenIRemoveOneFromMyShoppingCart(string pull)
         {
-            ScenarioContext.StepIsPending();
+            Product product = await _productRepository.GetByNameAsync(pull);
+            await _productRepository.RemoveAsync(product);
         }
     }
 }
