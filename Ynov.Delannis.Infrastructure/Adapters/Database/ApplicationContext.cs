@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Ynov.Delannis.Domain.productAggregate;
 using Ynov.Delannis.Domain.UserAggregate;
 
 namespace Ynov.Delannis.Infrastructure.Adapters.Database
@@ -30,9 +31,10 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Database
             modelBuilder.Entity<Product>(product =>
             {
                 product.HasKey(_ => _.Id);
-                product.Property(_ => _.Name).IsRequired();
-                product.Property(_ => _.Price).IsRequired();
-                product.Property(_ => _.Quantity).IsRequired();
+                product.Property(_ => _.Label).IsRequired();
+                product.Property(_ => _.TaxedPrice).IsRequired();
+                product.Property(_ => _.TaxRate).IsRequired();
+                product.Property(_ => _.StockQuantity).IsRequired();
             });
         }
     }

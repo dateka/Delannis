@@ -9,9 +9,18 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Domain.UserAggregate
         public void Authenticate(User? user)
         {
             _user = user;
+            _user.IsLogged = true;
         }
 
-        public bool IsAuthenticate() => _user is not null;
+        public bool IsAuthenticate()
+        {
+            if (_user != null && _user.IsLogged)
+            {
+                return _user is not null;
+            }
+            
+            return false;
+        } 
 
         public User? GetAuthenticatedUser() => _user;
     }

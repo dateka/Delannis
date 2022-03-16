@@ -3,5 +3,6 @@
     public interface IAggregateRoot
     {
         public string Id { get; }
+        //  public int Id { get; } ?
     }
 }

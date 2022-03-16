@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SolidToken.SpecFlow.DependencyInjection;
+using Ynov.Delannis.Domain.Core;
 using Ynov.Delannis.Domain.UserAggregate.Ports;
 using Ynov.Delannis.Domain.UserAggregate.Services;
 using Ynov.Delannis.Infrastructure.Adapters.Domain.UserAggregate;
@@ -13,12 +14,10 @@ namespace Ynov.Delannis.Specs.Hooks
         public static IServiceCollection ConfigureDependencies()
         {
             IServiceCollection services = new ServiceCollection();
+            services.InjectDomain();
+            
             services.AddScoped<IUserRepository, InMemoryUserRepository>();
             services.AddScoped<IAuthenticationGateway, InMemoryAuthenticationGateway>();
-            services.AddScoped<IUserRegistrationService, UserRegistrationService>();
-            services.AddScoped<IUserLoginService, UserLoginService>();
-            services.AddScoped<IShoppingCartService, ShoppingCartService>();
-            services.AddScoped<IProductRepository, InMemoryProductRepository>();
             services.AddScoped<ErrorDriver>();
             return services;
         }

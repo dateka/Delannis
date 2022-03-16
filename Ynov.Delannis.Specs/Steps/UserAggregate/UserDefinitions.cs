@@ -11,6 +11,7 @@ namespace Ynov.Delannis.Specs.Steps.UserAggregate
     [Binding]
     public class UserDefinitions
     {
+        public const string LoggedUserKey = "LoggedUser";
         private readonly IUserRepository _userRepository;
         private readonly IAuthenticationGateway _authenticationGateway;
 
@@ -40,6 +41,24 @@ namespace Ynov.Delannis.Specs.Steps.UserAggregate
                 dbUser.Should().NotBeNull();
                 dbUser.Should().Be(user);
             }
+        }
+
+        [Given(@"some logged users")]
+        public async Task GivenSomeLoggedUsers(Table table)
+        {
+            IEnumerable<User> _users = table.CreateSet<User>();
+
+            foreach (User user in _users)
+            {
+                await _userRepository.AddAsync(user);
+                (await _userRepository.GetByEmailAsync(user.Email).ConfigureAwait(false)).Should().NotBeNull();
+            }
+        }
+
+        [Given(@"an user with email ""(.*)""")]
+        public async Task GivenAnUserWithEmail(string? email)
+        {
+            User user = await _userRepository.GetByEmailAsync(email);
         }
     }
     

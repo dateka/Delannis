@@ -1,5 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Mapster;
+using Microsoft.Extensions.DependencyInjection;
+using Ynov.Delannis.Domain.CartAggregate.Ports;
+using Ynov.Delannis.Domain.productAggregate.Ports;
 using Ynov.Delannis.Domain.UserAggregate.Ports;
+using Ynov.Delannis.Infrastructure.Adapters.Domain.CartAggregate;
+using Ynov.Delannis.Infrastructure.Adapters.Domain.ProductAggregate;
 using Ynov.Delannis.Infrastructure.Adapters.Domain.UserAggregate;
 
 namespace Ynov.Delannis.Infrastructure.Adapters
@@ -15,7 +20,11 @@ namespace Ynov.Delannis.Infrastructure.Adapters
             
             services.AddScoped<IAuthenticationGateway, InMemoryAuthenticationGateway>();
             services.AddSingleton<IUserRepository, InMemoryUserRepository>();
+            services.AddSingleton<ICartRepository, InMemoryCartRepository>();
             services.AddSingleton<IProductRepository, InMemoryProductRepository>();
+            
+           //TypeAdapterConfig.GlobalSettings.Default.EnableNonPublicMembers(true);
+            //TypeAdapterConfig.GlobalSettings.Default.MapToConstructor(true);
         }
     }
 }

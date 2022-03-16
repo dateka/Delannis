@@ -11,5 +11,8 @@
         public const string UnvalidEmailException = nameof(UnvalidEmailException);
         public const string CantLogAccountWhenLoggedException = nameof(CantLogAccountWhenLoggedException);
         public const string UserNotFoundException = nameof(UserNotFoundException);
+        public const string NotEnoughtStockException = nameof(NotEnoughtStockException);
+        public const string CartDoesNotContainItemException = nameof(CartDoesNotContainItemException);
+        public const string NotLoggedException = nameof(NotLoggedException);
     }
 }

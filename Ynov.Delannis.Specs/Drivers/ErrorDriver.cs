@@ -37,6 +37,20 @@ namespace Ynov.Delannis.Specs.Drivers
                 _exceptions.Enqueue(ex);
             }
         }
+        
+        public async Task<T> TryExecuteAsync<T>(Func<Task<T>> act)
+        {
+            try
+            {
+                return await act().ConfigureAwait(false);
+            }
+            catch (DomainExceptionBase ex){
+                Trace.WriteLine($"The following exception was caught while executing {act.Method.Name}: {ex}");
+                _exceptions.Enqueue(ex);
+            }
+
+            return default;
+        }
 
         public void AssertExceptionWasRaisedWithMessage(string expectedErrorType)
         {
