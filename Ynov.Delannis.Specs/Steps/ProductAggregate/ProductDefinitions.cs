@@ -19,14 +19,23 @@ namespace Ynov.Delannis.Specs.Steps.ProductAggregate
         [Given(@"some products exists")]
         public async Task GivenSomeProductsExists(Table table)
         {
-            IEnumerable<Product> products = table.CreateSet<Product>();
+            IEnumerable<ProductModel> products = table.CreateSet<ProductModel>();
 
-            foreach (Product product in products)
+            foreach (ProductModel productModel in products)
             {
-                await _productRepository.AddAsync(product).ConfigureAwait(false);
-                Product savedProduct = await _productRepository.GetByIdAsync(Int32.Parse(product.Id)).ConfigureAwait(false);
+                Product product = new Product()
+                {
+                    Label = productModel.Label, 
+                    TaxedPrice = productModel.TaxedPrice, 
+                    TaxRate = productModel.TaxRate, 
+                    StockQuantity = productModel.StockQuantity
+                };
+                
+                await _productRepository.AddAsync(product);
+                Product dbProduct = await _productRepository.GetByIdAsync(Int32.Parse(product.Id));
 
-                savedProduct.Should().BeEquivalentTo(product);
+                dbProduct.Should().NotBeNull();
+                dbProduct.Should().Be(product);
             }
         }
 
@@ -36,5 +45,13 @@ namespace Ynov.Delannis.Specs.Steps.ProductAggregate
             Product savedProduct = await _productRepository.GetByProductLabelAsync(productLabel).ConfigureAwait(false);
             savedProduct.StockQuantity.Should().Be(stockQuantity);
         }
+    }
+    
+    public class ProductModel
+    {
+        public string Label { get; set; }
+        public decimal TaxedPrice { get; set; }
+        public decimal TaxRate { get; set; }
+        public int StockQuantity { get; set; }
     }
 }

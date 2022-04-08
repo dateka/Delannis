@@ -8,7 +8,7 @@ namespace Ynov.Delannis.Domain.productAggregate
         public decimal TaxedPrice { get; set; }
         public decimal TaxRate { get; set; }
         public int StockQuantity { get; set; }
-
+        
         public void LessStockQuantity(int quantity)
         {
             StockQuantity -= quantity;

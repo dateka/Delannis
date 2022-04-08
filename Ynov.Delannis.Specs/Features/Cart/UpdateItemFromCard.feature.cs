@@ -82,15 +82,18 @@ namespace Ynov.Delannis.Specs.Features.Cart
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Username",
                         "Email",
-                        "Password"});
+                        "Password",
+                        "IsLogged"});
             table6.AddRow(new string[] {
                         "elonMusk",
                         "elonMusk@tesla.com",
-                        "Azerty123&"});
+                        "Azerty123&",
+                        "true"});
             table6.AddRow(new string[] {
                         "billGate",
                         "billgate@microsoft.com",
-                        "Azerty123&"});
+                        "Azerty123&",
+                        "false"});
 #line 5
         testRunner.Given("the following users exist", ((string)(null)), table6, "Given ");
 #line hidden
@@ -175,7 +178,7 @@ namespace Ynov.Delannis.Specs.Features.Cart
     this.FeatureBackground();
 #line hidden
 #line 21
-        testRunner.Given("an user with email \"alexandre@gmail.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("an user with email \"billgate@microsoft.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 22
         testRunner.When("I try to update \"Ryzen 5900X\" by 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -219,7 +222,7 @@ namespace Ynov.Delannis.Specs.Features.Cart
     this.FeatureBackground();
 #line hidden
 #line 26
-        testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("a logged user as \"elonMusk@tesla.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 27
         testRunner.When("I try to update \"Ryzen 5700X\" by 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -263,7 +266,7 @@ namespace Ynov.Delannis.Specs.Features.Cart
     this.FeatureBackground();
 #line hidden
 #line 31
-        testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("a logged user as \"elonMusk@tesla.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 32
         testRunner.When("I try to update \"Ryzen 5900X\" by 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -313,7 +316,7 @@ namespace Ynov.Delannis.Specs.Features.Cart
     this.FeatureBackground();
 #line hidden
 #line 38
-        testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("a logged user as \"elonMusk@tesla.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 39
         testRunner.When("I try to add \"12\" quantity of \"Ryzen 5900X\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -357,7 +360,7 @@ namespace Ynov.Delannis.Specs.Features.Cart
     this.FeatureBackground();
 #line hidden
 #line 43
-        testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("a logged user as \"elonMusk@tesla.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 44
         testRunner.When("I try to update \"Ryzen 5900X\" by -1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

@@ -82,15 +82,18 @@ namespace Ynov.Delannis.Specs.Features.Cart
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Username",
                         "Email",
-                        "Password"});
+                        "Password",
+                        "IsLogged"});
             table3.AddRow(new string[] {
                         "elonMusk",
                         "elonMusk@tesla.com",
-                        "Azerty123&"});
+                        "Azerty123&",
+                        "true"});
             table3.AddRow(new string[] {
                         "billGate",
                         "billgate@microsoft.com",
-                        "Azerty123&"});
+                        "Azerty123&",
+                        "false"});
 #line 5
   testRunner.Given("the following users exist", ((string)(null)), table3, "Given ");
 #line hidden
@@ -122,13 +125,13 @@ namespace Ynov.Delannis.Specs.Features.Cart
                         "TaxRate",
                         "Quantity"});
             table5.AddRow(new string[] {
-                        "alexandre@gmail.com",
+                        "elonMusk@tesla.com",
                         "Ryzen 5900X",
                         "599",
                         "20",
                         "1"});
             table5.AddRow(new string[] {
-                        "johndoe@gmail.com",
+                        "billgate@microsoft.com",
                         "Ryzen 5700X",
                         "349",
                         "20",
@@ -219,7 +222,7 @@ namespace Ynov.Delannis.Specs.Features.Cart
  this.FeatureBackground();
 #line hidden
 #line 26
-  testRunner.Given("a logged user as \"elonMusk\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("a logged user as \"elonMusk@tesla.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 27
   testRunner.When("I try to empty my cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
