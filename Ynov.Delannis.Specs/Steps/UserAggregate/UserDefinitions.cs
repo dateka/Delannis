@@ -64,6 +64,14 @@ namespace Ynov.Delannis.Specs.Steps.UserAggregate
             //ScenarioContext.Current.Add("LoggedUser",user.Email);
             _scenarioContext.Add("LoggedUser", user.Email);
         }
+        
+        [Given(@"a logged user with email ""(.*)""")]
+        public async Task GivenALoggedUserWithEmail(string email)
+        {
+            User user = await _userRepository.GetByEmailAsync(email);
+            _authenticationGateway.Authenticate(user);
+            _scenarioContext.Add("LoggedUser", user.Email);
+        }
     }
     
     public class UserModel

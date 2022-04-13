@@ -222,7 +222,7 @@ namespace Ynov.Delannis.Specs.Features.Cart
  this.FeatureBackground();
 #line hidden
 #line 26
-  testRunner.Given("an user with email \"elonMusk@tesla.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("a logged user with email \"elonMusk@tesla.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 27
   testRunner.When("I try to empty my cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

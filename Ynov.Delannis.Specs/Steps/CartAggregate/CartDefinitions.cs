@@ -57,8 +57,15 @@ namespace Ynov.Delannis.Specs.Steps.CartAggregate
 
             _cart = await _cartRepository.GetCartByIdAndUserEmailAsync(cartId, _user.Email).ConfigureAwait(false);
 
-            _cart.CartItems.ElementAt(0).Label.Should().BeEquivalentTo(cartAttempt.CartItems.ElementAt(0).Label);
-            _cart.CartItems.ElementAt(0).Quantity.Should().Be(cartAttempt.CartItems.ElementAt(0).Quantity);
+            if (_cart.CartItems.Count > 0)
+            {
+                _cart.CartItems.ElementAt(0).Label.Should().BeEquivalentTo(cartAttempt.CartItems.ElementAt(0).Label);
+                _cart.CartItems.ElementAt(0).Quantity.Should().Be(cartAttempt.CartItems.ElementAt(0).Quantity);
+            }
+            else
+            {
+                _cart.CartItems.Should().BeEquivalentTo(cartAttempt.CartItems);
+            }
         }
         [Then(@"My cart should have total of ""(.*)""")]
         public async Task ThenMyCartShouldHaveTotalOf(decimal expectedTotal)

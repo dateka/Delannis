@@ -59,7 +59,7 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Domain.CartAggregate
 
         public Task<Cart> GetCartByUserEmailAsync(string? userEmail)
         {
-            return Task.FromResult(_carts.First(_ => _.Email == userEmail));
+            return Task.FromResult(_carts.FirstOrDefault(_ => _.Email == userEmail));
         } 
         //public ValueTask<Cart?> GetCartByUserEmailAsync(string? userEmail) => new ValueTask<Cart?>(_carts.FirstOrDefault(_ => _.Email == userEmail));
     }

@@ -18,7 +18,7 @@
 		Then I should be notified with "NotLogged" message
 
 	Scenario Outline: logged user add items in is cart
-		Given an user with email "elonMusk@tesla.com"
+		Given a logged user with email "elonMusk@tesla.com"
 		When I try to add "<Quantity>" quantity of "<Product>"
 		Then I should have correct items in my cart
 		And My cart should have total of "<ExpectedTotal>"
@@ -30,6 +30,6 @@
 		  | Ryzen 5900X | 2        | 1198          | 8                     |
 
 	Scenario: logged user add to much items based on stock
-		Given an user with email "elonMusk@tesla.com"
+		Given a logged user with email "elonMusk@tesla.com"
 		When I try to add "2" quantity of "Ryzen 5700X"
 		Then I should be notified with "NotEnoughtStock" message

@@ -32,9 +32,9 @@ namespace Ynov.Delannis.Domain.CartAggregate.Services
         public async Task<Cart> HandleAsync(string id, string email)
         {
             User user = await _userRepository.GetByEmailAsync(email);
-            _authenticationGateway.Authenticate(user);
+            //_authenticationGateway.Authenticate(user);
 
-            if (_authenticationGateway.IsAuthenticate())
+            if (user.IsLogged)
             {
                 Cart cart = await _cartRepository.GetCartByIdAndUserEmailAsync(id, email).ConfigureAwait(false);
 

@@ -23,7 +23,7 @@
 		Then I should be notified with "NotLogged" message
 
 	Scenario: logged user update cart item quantity
-		Given an user with email "elonMusk@tesla.com"
+		Given a logged user with email "elonMusk@tesla.com"
 		When I try to empty my cart
 		Then my cart should be empty
 		And stock for "Ryzen 5900X" should be "11"
