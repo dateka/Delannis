@@ -207,7 +207,7 @@ namespace Ynov.Delannis.Specs.Features.Cart
  this.FeatureBackground();
 #line hidden
 #line 21
-  testRunner.Given("a logged user as \"elonMusk@tesla.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("an user with email \"elonMusk@tesla.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 22
   testRunner.When(string.Format("I try to add \"{0}\" quantity of \"{1}\"", quantity, product), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -257,7 +257,7 @@ namespace Ynov.Delannis.Specs.Features.Cart
  this.FeatureBackground();
 #line hidden
 #line 33
-  testRunner.Given("a logged user as \"elonMusk@tesla.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("an user with email \"elonMusk@tesla.com\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 34
   testRunner.When("I try to add \"2\" quantity of \"Ryzen 5700X\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

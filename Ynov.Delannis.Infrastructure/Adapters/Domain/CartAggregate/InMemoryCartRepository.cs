@@ -11,17 +11,43 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Domain.CartAggregate
 {
     public class InMemoryCartRepository : ICartRepository
     {
-        private IImmutableList<Cart> _carts = ImmutableArray<Cart>.Empty;
-        public IReadOnlyCollection<Cart>? Carts => _carts.Select(_ => _.Adapt<Cart>()).ToList().AsReadOnly();
-        public ValueTask<Cart> GetCartByIdAndUserEmailAsync(int cartId, string? userEmail) => new ValueTask<Cart>(Carts.First(_ => Int64.Parse(_.Id) == cartId && _.Email == userEmail));
+        //private IImmutableList<Cart> _carts = ImmutableArray<Cart>.Empty;
+        
+        private IImmutableSet<Cart> _carts = ImmutableHashSet<Cart>.Empty;
+        
+        //public IReadOnlyCollection<Cart>? Carts => _carts.Select(_ => _.Adapt<Cart>()).ToList().AsReadOnly();
 
-        public Task AddAsync(Cart cart)
+        public Task<Cart> GetCartByIdAndUserEmailAsync(string cartId, string? userEmail)
+        {
+            return Task.FromResult(_carts.First(_ => _.Id == cartId && _.Email == userEmail));
+           //return new ValueTask<Cart>(Carts.First(_ => _.Id == cartId && _.Email == userEmail));
+        } 
+
+        public Task AddAsync(Cart product)
+        {
+            IImmutableSet<Cart> immutableSet = _carts.Add(product);
+            _carts = immutableSet;
+            
+            return Task.CompletedTask;
+        }
+        
+        /*public Task AddAsync(Cart cart)
         {
             _carts = _carts.Add(cart);
             return Task.CompletedTask;
+        }*/
+        
+        public Task UpdateAsync(Cart product)
+        {
+            ICollection<Cart> tempProducts = _carts.Where(_ => _.Id != product.Id).ToList();
+            tempProducts.Add(product);
+
+            _carts = tempProducts.ToImmutableHashSet();
+        
+            return Task.CompletedTask;
         }
 
-        public Task UpdateAsync(Cart cart)
+        /*public Task UpdateAsync(Cart cart)
         {
             ICollection<Cart> tempCarts = _carts.Where(_ => _.Id != cart.Id).ToList();
             tempCarts.Add(cart);
@@ -29,8 +55,12 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Domain.CartAggregate
             _carts = tempCarts.ToImmutableList();
         
             return Task.CompletedTask;
-        }
+        }*/
 
-        public ValueTask<Cart?> GetCartByUserEmailAsync(string? userEmail) => new ValueTask<Cart?>(_carts.FirstOrDefault(_ => _.Email == userEmail));
+        public Task<Cart> GetCartByUserEmailAsync(string? userEmail)
+        {
+            return Task.FromResult(_carts.First(_ => _.Email == userEmail));
+        } 
+        //public ValueTask<Cart?> GetCartByUserEmailAsync(string? userEmail) => new ValueTask<Cart?>(_carts.FirstOrDefault(_ => _.Email == userEmail));
     }
 }

@@ -36,7 +36,7 @@ namespace Ynov.Delannis.Specs.Steps.CartAggregate
             _cart = await _cartRepository.GetCartByUserEmailAsync(_user?.Email)!.ConfigureAwait(false);
         
             async Task<Cart> HandleAsync() =>
-                await _emptyCartService.HandleAsync(Int32.Parse(_cart?.Id), _user?.Email).ConfigureAwait(false);
+                await _emptyCartService.HandleAsync(_cart?.Id, _user?.Email).ConfigureAwait(false);
 
             await _errorDriver.TryExecuteAsync(HandleAsync).ConfigureAwait(false);
         }
@@ -44,7 +44,7 @@ namespace Ynov.Delannis.Specs.Steps.CartAggregate
         [Then(@"my cart should be empty")]
         public async Task WhenMyCartShouldBeEmpty()
         {
-            Cart cart = await _cartRepository.GetCartByIdAndUserEmailAsync(Int32.Parse(_cart.Id), _user.Email).ConfigureAwait(false);
+            Cart cart = await _cartRepository.GetCartByIdAndUserEmailAsync(_cart.Id, _user.Email).ConfigureAwait(false);
             cart.CartItems.Should().BeEmpty();
         }
     }

@@ -11,7 +11,7 @@ namespace Ynov.Delannis.Domain.CartAggregate.Services
 {
     public interface IEmptyCartService
     {
-        Task<Cart> HandleAsync(int id, string email);
+        Task<Cart> HandleAsync(string id, string email);
     }
 
     public class EmptyCartService : IEmptyCartService
@@ -29,7 +29,7 @@ namespace Ynov.Delannis.Domain.CartAggregate.Services
             _authenticationGateway = authenticationGateway;
         }
 
-        public async Task<Cart> HandleAsync(int id, string email)
+        public async Task<Cart> HandleAsync(string id, string email)
         {
             User user = await _userRepository.GetByEmailAsync(email);
             _authenticationGateway.Authenticate(user);

@@ -22,8 +22,8 @@ namespace Ynov.Delannis.Infrastructure.Adapters
             services.AddSingleton<IUserRepository, InMemoryUserRepository>();
             services.AddSingleton<ICartRepository, InMemoryCartRepository>();
             services.AddSingleton<IProductRepository, InMemoryProductRepository>();
-            
-           //TypeAdapterConfig.GlobalSettings.Default.EnableNonPublicMembers(true);
+
+            //TypeAdapterConfig.GlobalSettings.Default.EnableNonPublicMembers(true);
             //TypeAdapterConfig.GlobalSettings.Default.MapToConstructor(true);
         }
     }

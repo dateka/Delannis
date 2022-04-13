@@ -6,6 +6,7 @@ using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using Ynov.Delannis.Domain.productAggregate;
 using Ynov.Delannis.Domain.productAggregate.Ports;
+using Ynov.Delannis.Domain.UserAggregate.Ports;
 
 namespace Ynov.Delannis.Specs.Steps.ProductAggregate
 {
@@ -14,7 +15,10 @@ namespace Ynov.Delannis.Specs.Steps.ProductAggregate
     {
         private readonly IProductRepository _productRepository;
 
-        public ProductDefinitions(IProductRepository productRepository) => _productRepository = productRepository;
+        public ProductDefinitions(IProductRepository productRepository)
+        {
+            _productRepository = productRepository;
+        }
 
         [Given(@"some products exists")]
         public async Task GivenSomeProductsExists(Table table)
@@ -32,7 +36,7 @@ namespace Ynov.Delannis.Specs.Steps.ProductAggregate
                 };
                 
                 await _productRepository.AddAsync(product);
-                Product dbProduct = await _productRepository.GetByIdAsync(Int32.Parse(product.Id));
+                Product dbProduct = await _productRepository.GetByIdAsync(product.Id);
 
                 dbProduct.Should().NotBeNull();
                 dbProduct.Should().Be(product);

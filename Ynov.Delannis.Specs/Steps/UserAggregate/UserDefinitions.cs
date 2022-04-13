@@ -11,14 +11,16 @@ namespace Ynov.Delannis.Specs.Steps.UserAggregate
     [Binding]
     public class UserDefinitions
     {
-        public const string LoggedUserKey = "LoggedUser";
+        public const string LoggedUserKey = "IsLogged";
         private readonly IUserRepository _userRepository;
         private readonly IAuthenticationGateway _authenticationGateway;
+        private ScenarioContext _scenarioContext;
 
-        public UserDefinitions(IUserRepository userRepository, IAuthenticationGateway authenticationGateway)
+        public UserDefinitions(IUserRepository userRepository, IAuthenticationGateway authenticationGateway, ScenarioContext scenarioContext)
         {
             _userRepository = userRepository;
             _authenticationGateway = authenticationGateway;
+            _scenarioContext = scenarioContext;
         }
         
         [Given(@"a logged user as ""(.*)""")]
@@ -59,6 +61,8 @@ namespace Ynov.Delannis.Specs.Steps.UserAggregate
         public async Task GivenAnUserWithEmail(string? email)
         {
             User user = await _userRepository.GetByEmailAsync(email);
+            //ScenarioContext.Current.Add("LoggedUser",user.Email);
+            _scenarioContext.Add("LoggedUser", user.Email);
         }
     }
     

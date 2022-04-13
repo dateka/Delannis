@@ -5,6 +5,7 @@ using Ynov.Delannis.Domain.CartAggregate.Services;
 using Ynov.Delannis.Domain.productAggregate;
 using Ynov.Delannis.Domain.productAggregate.Ports;
 using Ynov.Delannis.Domain.UserAggregate;
+using Ynov.Delannis.Domain.UserAggregate.Ports;
 using Ynov.Delannis.Specs.Drivers;
 using Ynov.Delannis.Specs.Steps.UserAggregate;
 
@@ -17,23 +18,27 @@ namespace Ynov.Delannis.Specs.Steps.CartAggregate
         public const string CartAttemptKey = "CartAttempt";
         private readonly IProductRepository _productRepository;
         private readonly ScenarioContext _scenarioContext;
+        private readonly IUserRepository _userRepository;
         private IAddProductToCartService _addProductToCartService;
         private readonly ErrorDriver _errorDriver;
 
         public AddToCartDefinitions(IProductRepository productRepository, ScenarioContext scenarioContext,
-            IAddProductToCartService addProductToCartService, ErrorDriver errorDriver)
+            IAddProductToCartService addProductToCartService, ErrorDriver errorDriver, IUserRepository userRepository)
         {
             _productRepository = productRepository;
             _scenarioContext = scenarioContext;
             _addProductToCartService = addProductToCartService;
             _errorDriver = errorDriver;
+            _userRepository = userRepository;
         }
 
         [When(@"I try to add ""(.*)"" quantity of ""(.*)""")]
         public async Task WhenITryToAddQuantityOf(int quantity, string productLabel)
         {
             Product product = await _productRepository.GetByProductLabelAsync(productLabel).ConfigureAwait(false);
-            User user = _scenarioContext.Get<User>(UserDefinitions.LoggedUserKey);
+            string userMail = _scenarioContext.Get<string>("LoggedUser");
+            //string userMail = ScenarioContext.Current["LoggedUser"].ToString();
+            User user = await _userRepository.GetByEmailAsync(userMail);
 
             async Task<Cart> HandleAsync() =>
                 await _addProductToCartService.HandleAsync(user, product, quantity).ConfigureAwait(false);
@@ -42,8 +47,10 @@ namespace Ynov.Delannis.Specs.Steps.CartAggregate
 
             Cart cartAttempt = new Cart();
             cartAttempt.AddItem(product.Label, product.TaxedPrice, product.TaxRate, quantity);
-            _scenarioContext.Add(CartIdKey, cart?.Id);
-            _scenarioContext.Add(CartAttemptKey, cartAttempt);
+            //ScenarioContext.Current.Add(CartIdKey, cart?.Id);
+            //ScenarioContext.Current.Add(CartAttemptKey, cartAttempt);
+            _scenarioContext.Add("CartIdKey", cart?.Id);
+            _scenarioContext.Add("CartAttempt", cartAttempt);
         }
     }
 }
