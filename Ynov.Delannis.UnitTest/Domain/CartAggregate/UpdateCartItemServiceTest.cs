@@ -8,7 +8,8 @@ using Ynov.Delannis.Domain.CartAggregate.Ports;
 using Ynov.Delannis.Domain.CartAggregate.Services;
 using Ynov.Delannis.Domain.productAggregate;
 using Ynov.Delannis.Domain.productAggregate.Ports;
-using Ynov.Delannis.Domain.UserAggregate.Dtos;
+using Ynov.Delannis.Domain.UserAggregate;
+using Ynov.Delannis.Domain.UserAggregate.Ports;
 using Ynov.Delannis.DomainShared.Core.Exceptions.CartAggregate;
 using Ynov.Delannis.DomainShared.Core.Exceptions.ProductAggregate;
 using Ynov.Delannis.DomainShared.Core.Exceptions.UserAggregate;
@@ -21,14 +22,12 @@ namespace Ynov.Delannis.UnitTest.Domain.CartAggregate
         private IUpdateCartItemService _updateCartItemService;
         private IProductRepository _productRepository;
         private ICartRepository _cartRepository;
+        private IUserRepository _userRepository;
+        private IAuthenticationGateway _authenticationGateway;
+        
+        private  User _loggedUser = new User("elonMusk", "elonMusk@tesla.com", "Azerty123&");
+        private  User _notLoggedUser = new User("billGate", "billgate@microsoft.com", "Azerty123&");
 
-        private UserDto _userLogged = new UserDto()
-        {
-            Email = "logged@email.com",
-            IsLogged = true
-        };
-
-        //private UserWebServiceMock _userWebService;
         private Product _product;
 
         private readonly Product _addedProduct = new Product()
@@ -41,9 +40,10 @@ namespace Ynov.Delannis.UnitTest.Domain.CartAggregate
         {
             await base.InitFixtureAsync();
             _updateCartItemService = GetImplementationFromService<IUpdateCartItemService>();
-            //_userWebService = (UserWebServiceMock)GetImplementationFromService<IUserWebService>();
             _productRepository = GetImplementationFromService<IProductRepository>();
             _cartRepository = GetImplementationFromService<ICartRepository>();
+            _userRepository = GetImplementationFromService<IUserRepository>();
+            _authenticationGateway = GetImplementationFromService<IAuthenticationGateway>();
 
             _product = new Product()
             {
@@ -55,9 +55,13 @@ namespace Ynov.Delannis.UnitTest.Domain.CartAggregate
             };
             await _productRepository.AddAsync(_product);
 
+            await _userRepository.AddAsync(_loggedUser);
+            await _userRepository.AddAsync(_notLoggedUser);
+            _authenticationGateway.Authenticate(_loggedUser);
+            
             Cart cart = new Cart()
             {
-                Email = _userLogged.Email,
+                Email = _loggedUser.Email,
                 Id = 1.ToString()
             };
 
@@ -73,7 +77,8 @@ namespace Ynov.Delannis.UnitTest.Domain.CartAggregate
         [Fact]
         public async Task UpdateCartItemUseCase_UserIsNotLogged_ShouldThrowException()
         {
-            Func<Task> handleAsync = async () => await _updateCartItemService.HandleAsync(string.Empty, _product.Label, 2);
+            Func<Task> handleAsync = async () => 
+                await _updateCartItemService.HandleAsync(_notLoggedUser.Email, _product.Label, 2);
 
             await handleAsync.Should().ThrowExactlyAsync<NotLoggedException>();
         }
@@ -81,10 +86,8 @@ namespace Ynov.Delannis.UnitTest.Domain.CartAggregate
         [Fact]
         public async Task UpdateCartItemUseCase_UserIsLoggedButUpdateBadProduct_ShouldThrowException()
         {
-            //(_userWebService).AddUser(_userLogged);
-
             Func<Task> handleAsync = async () =>
-                await _updateCartItemService.HandleAsync(_userLogged.Email, "Ryzen 3600", 2);
+                await _updateCartItemService.HandleAsync(_loggedUser.Email, "Ryzen 3600", 2);
 
             await handleAsync.Should().ThrowExactlyAsync<CartDoesNotContainItemException>();
         }
@@ -93,10 +96,8 @@ namespace Ynov.Delannis.UnitTest.Domain.CartAggregate
         [Fact]
         public async Task UpdateCartItemUseCase_UserIsLoggedButUpdateTooMuchQuantity_ShouldThrowException()
         {
-            //(_userWebService).AddUser(_userLogged);
-
             Func<Task> handleAsync = async () =>
-                await _updateCartItemService.HandleAsync(_userLogged.Email, _product.Label, 12);
+                await _updateCartItemService.HandleAsync(_loggedUser.Email, _product.Label, 12);
 
             await handleAsync.Should().ThrowExactlyAsync<NotEnoughtStockException>();
         }
@@ -104,11 +105,10 @@ namespace Ynov.Delannis.UnitTest.Domain.CartAggregate
         [Fact]
         public async Task UpdateCartItemUseCase_UpdateQuantity_ShouldUpdateCartItem()
         {
-            //(_userWebService).AddUser(_userLogged);
             int quantity = 2;
-            await _updateCartItemService.HandleAsync(_userLogged.Email, _product.Label, quantity);
+            await _updateCartItemService.HandleAsync(_loggedUser.Email, _product.Label, quantity);
 
-            Cart? _cart = await _cartRepository.GetCartByUserEmailAsync(_userLogged.Email);
+            Cart? _cart = await _cartRepository.GetCartByUserEmailAsync(_loggedUser.Email);
 
             CartItem cartItem = _cart.CartItems.First(_ => _.Label == _product.Label);
             cartItem.Quantity.Should().Be(3);
@@ -121,11 +121,10 @@ namespace Ynov.Delannis.UnitTest.Domain.CartAggregate
         [Fact]
         public async Task UpdateCartItemUseCase_UpdateQuantityToZero_ShouldHaveEmptyCartItem()
         {
-            //(_userWebService).AddUser(_userLogged);
             int quantity = -1;
-            await _updateCartItemService.HandleAsync(_userLogged.Email, _product.Label, quantity);
+            await _updateCartItemService.HandleAsync(_loggedUser.Email, _product.Label, quantity);
 
-            Cart? _cart = await _cartRepository.GetCartByUserEmailAsync(_userLogged.Email);
+            Cart? _cart = await _cartRepository.GetCartByUserEmailAsync(_loggedUser.Email);
 
             _cart.CartItems.Should().BeEmpty();
             _cart.TotalWithTaxes.Should().Be(0);

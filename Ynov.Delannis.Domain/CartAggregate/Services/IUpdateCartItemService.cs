@@ -59,7 +59,10 @@ namespace Ynov.Delannis.Domain.CartAggregate.Services
                 }
                 await _productRepository.UpdateAsync(product);
             }
-            throw new NotLoggedException();
+            else
+            {
+                throw new NotLoggedException();
+            }
         }
     }
 }
