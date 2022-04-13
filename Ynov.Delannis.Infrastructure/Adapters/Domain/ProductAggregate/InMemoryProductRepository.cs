@@ -18,7 +18,15 @@ namespace Ynov.Delannis.Infrastructure.Adapters.Domain.ProductAggregate
             
             return Task.CompletedTask;
         }
-        
+
+        public Task RemoveAsync(Product product)
+        {
+            IImmutableSet<Product> immutableSet = _products.Remove(product);
+            _products = immutableSet;
+            
+            return Task.CompletedTask;
+        }
+
         public Task<Product> GetByIdAsync(string productId)
         {
             return Task.FromResult(_products.FirstOrDefault(_ => _.Id == productId));
